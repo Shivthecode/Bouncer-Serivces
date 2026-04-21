@@ -1,91 +1,150 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Shield, Target } from 'lucide-react';
-
-const floatingItemVariants = {
-  animate: {
-    y: [0, -20, 0],
-    rotate: [0, 10, -10, 0],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    },
-  },
-};
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Shield, Target, ArrowRight, ShieldCheck, Zap, Lock } from 'lucide-react';
 
 const Hero = () => {
+  const bouncerImages = [
+    "https://images.unsplash.com/photo-1652739758426-56a564265f9e?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1614213856754-b28af802aa04?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1763735134174-eebb53a567f9?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1605071483252-41904a888644?w=800&auto=format&fit=crop"
+  ];
+
+  const [activeImg, setActiveImg] = useState(bouncerImages[0]);
+
+  // Auto-switch logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImg((current) => {
+        const currentIndex = bouncerImages.indexOf(current);
+        const nextIndex = (currentIndex + 1) % bouncerImages.length;
+        return bouncerImages[nextIndex];
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [activeImg]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden transition-colors duration-500 bg-[#F5F5F7] dark:bg-[#050505]">
+    <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden transition-colors duration-500 bg-[#F5F5F7] dark:bg-[#050505] font-sans">
       
-      {/* --- Background Glow Orbs --- */}
-      {/* Light Mode: Milky White/Katha Glow | Dark Mode: Ice White Glow */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#722F37]/5 dark:bg-white/5 blur-[140px] rounded-full"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-white dark:bg-[#F0F8FF]/5 blur-[120px] rounded-full"></div>
+      {/* Background Decorative Glow */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#722F37]/5 blur-[140px] rounded-full pointer-events-none"></div>
 
-      {/* --- 3D Floating Elements --- */}
-      <motion.div
-        className="absolute top-[18%] left-[12%] p-5 bg-white/60 dark:bg-white/5 backdrop-blur-md border border-[#722F37]/10 dark:border-white/20 rounded-3xl shadow-xl hidden md:block"
-        variants={floatingItemVariants}
-        animate="animate"
-      >
-        <Shield size={38} className="text-[#722F37] dark:text-[#F0F8FF]" strokeWidth={1} />
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-[25%] left-[18%] p-4 bg-white/60 dark:bg-white/5 backdrop-blur-md border border-[#722F37]/5 dark:border-white/10 rounded-2xl hidden md:block"
-        variants={{ animate: { ...floatingItemVariants.animate, y: [0, 15, 0] } }}
-        animate="animate"
-      >
-        <Target size={28} className="text-[#722F37]/30 dark:text-[#F0F8FF]/60" strokeWidth={1.5} />
-      </motion.div>
-
-      <motion.div
-        className="absolute top-[25%] right-[12%] px-6 py-2 bg-white dark:bg-white/10 backdrop-blur-xl border border-[#722F37]/10 dark:border-white/20 rounded-full flex items-center gap-3 shadow-lg hidden md:flex"
-        variants={floatingItemVariants}
-        animate="animate"
-      >
-        <div className="w-2 h-2 bg-[#722F37] dark:bg-[#F0F8FF] rounded-full animate-pulse shadow-[0_0_10px_#722F37] dark:shadow-[0_0_10px_#F0F8FF]"></div>
-        <span className="text-[#722F37] dark:text-[#F0F8FF] text-[10px] font-black uppercase tracking-[0.3em]">Mahaveer Guard Force</span>
-      </motion.div>
-
-      {/* --- Main Content --- */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center font-sans">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Intro Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white dark:bg-white/5 border border-[#722F37]/10 dark:border-white/10 shadow-sm mb-8"
-        >
-          <span className="text-[#722F37]/70 dark:text-[#F0F8FF]/60 text-[10px] font-bold uppercase tracking-[0.4em]">
-            Premium Security Experience
-          </span>
-        </motion.div>
+        {/* --- LEFT SIDE: DETAILED CONTENT --- */}
+        <div className="lg:col-span-6 space-y-10 order-1 text-center lg:text-left">
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10"
+            >
+              <div className="w-1.5 h-1.5 bg-[#722F37] rounded-full animate-pulse shadow-[0_0_10px_#722F37]"></div>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-black dark:text-white/70">Strategic Command HQ | Amethi</span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-6xl md:text-8xl lg:text-[90px] font-black uppercase tracking-tighter leading-[0.85] text-black dark:text-white"
+            >
+              ELITE <br /> 
+              <span className="text-[#722F37] italic font-light">MANGUARD.</span>
+            </motion.h1>
 
-        {/* Main Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-6xl md:text-[100px] font-black tracking-tighter leading-[0.9] mb-8 text-zinc-900 dark:text-white"
-        >
-          THE NEXT LEVEL <br /> 
-          <span className="text-[#722F37] dark:text-[#F0F8FF] opacity-60 dark:opacity-40 italic font-light">OF PROTECTION.</span>
-        </motion.h1>
+            <motion.p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-lg max-w-xl mx-auto lg:mx-0 font-medium tracking-tight leading-relaxed">
+              Mahaveer Bouncer Force delivers the pinnacle of tactical protection. 
+              Our deployment units consist of highly trained professionals, ex-servicemen, 
+              and verified specialists engineered for high-pressure corporate and social 
+              environments across the UP region.
+            </motion.p>
+          </div>
 
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-zinc-500 dark:text-gray-500 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-medium tracking-tight"
-        >
-          No more compromises. Hire Amethi's most elite, verified bouncers 
-          with a single click. Security redefined for the modern world.
-        </motion.p>
+          {/* Tactical Features Grid */}
+          <div className="grid grid-cols-2 gap-6 max-w-lg mx-auto lg:mx-0">
+            <div className="flex items-center gap-3 border-l-2 border-[#722F37] pl-4">
+              <ShieldCheck className="text-[#722F37]" size={18} />
+              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">100% Verified</span>
+            </div>
+            <div className="flex items-center gap-3 border-l-2 border-[#722F37] pl-4">
+              <Zap className="text-[#722F37]" size={18} />
+              <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Rapid Response</span>
+            </div>
+          </div>
 
+          {/* CIRCULAR THUMBNAILS */}
+          <div className="space-y-4 pt-4">
+             <div className="flex gap-4 justify-center lg:justify-start">
+               {bouncerImages.map((img, i) => (
+                 <button
+                   key={i}
+                   onClick={() => setActiveImg(img)}
+                   className={`w-14 h-14 rounded-full overflow-hidden border-2 transition-all duration-300 ${
+                     activeImg === img 
+                     ? 'border-[#722F37] scale-110 shadow-lg' 
+                     : 'border-black/10 dark:border-white/10 opacity-40 hover:opacity-100'
+                   }`}
+                 >
+                   <img src={img} className="w-full h-full object-cover" alt="div" />
+                 </button>
+               ))}
+             </div>
+          </div>
+
+          <motion.button className="group relative flex items-center gap-6 bg-black dark:bg-white text-white dark:text-black px-12 py-6 rounded-full font-black text-[10px] uppercase tracking-[0.4em] shadow-2xl transition-all overflow-hidden">
+            <span className="relative z-10">Initiate Deployment</span>
+            <ArrowRight size={18} className="relative z-10 group-hover:translate-x-2 transition-transform" />
+            <div className="absolute inset-0 bg-[#722F37] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          </motion.button>
+        </div>
+
+        {/* --- RIGHT SIDE: IMAGE WITH BORDER --- */}
+        <div className="lg:col-span-6 relative order-2 px-10 group">
+          
+          {/* Border Accents */}
+          <div className="absolute -top-4 -left-4 w-20 h-20 border-t-2 border-l-2 border-[#722F37] rounded-tl-[3rem] pointer-events-none"></div>
+          <div className="absolute -bottom-4 -right-4 w-20 h-20 border-b-2 border-r-2 border-[#722F37] rounded-br-[3rem] pointer-events-none"></div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeImg}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="relative aspect-[4/5] max-w-[420px] rounded-[3.5rem] p-2 border border-black/5 dark:border-white/10 shadow-2xl mx-auto overflow-visible"
+            >
+              {/* Outer Border Glow */}
+              <div className="absolute inset-0 rounded-[3.5rem] border-2 border-[#722F37]/20 pointer-events-none scale-[1.03]"></div>
+              
+              <div className="w-full h-full rounded-[3rem] overflow-hidden border border-[#722F37]/30 relative">
+                <img 
+                  src={activeImg} 
+                  alt="Elite Force" 
+                  className="w-full h-full object-cover contrast-[1.1]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              </div>
+
+              <div className="absolute top-10 left-10 p-4 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 text-[#722F37]">
+                <Target size={28} />
+              </div>
+
+              <div className="absolute bottom-12 right-12 text-right">
+                <div className="w-12 h-1 bg-[#722F37] mb-3 ml-auto"></div>
+                <p className="text-white font-black text-2xl tracking-tighter uppercase leading-none">Mahaveer <br/>Unit</p>
+                <p className="text-[#722F37] text-[8px] font-black uppercase tracking-[0.3em] mt-1">Active Patrol</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+      </div>
+
+      {/* Background Watermark */}
+      <div className="absolute bottom-0 right-0 text-[15rem] font-black text-black/[0.02] dark:text-white/[0.01] pointer-events-none select-none uppercase tracking-tighter">
+        Elite
       </div>
     </section>
   );

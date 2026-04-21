@@ -67,7 +67,7 @@ const ServicesPage = () => {
   }, []);
 
   const handleWhatsApp = (serviceName) => {
-    const phone = "919956197272"; // Aapka correct number
+    const phone = "919956197272";
     const message = `Hello Mahaveer Bouncer, I am interested in "${serviceName}" service. Please provide details.`;
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -77,18 +77,18 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="bg-[#050505] pt-32 pb-20 selection:bg-[#722F37] font-sans">
+    <div className="bg-[#F5F5F7] dark:bg-[#050505] text-black dark:text-white pt-32 pb-20 selection:bg-[#722F37] selection:text-white transition-colors duration-500 font-sans">
       
       {/* Header */}
       <section className="max-w-7xl mx-auto px-6 mb-24 text-center">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-white"
+          className="text-6xl md:text-8xl font-black uppercase tracking-tighter text-black dark:text-white"
         >
           TACTICAL <span className="text-[#722F37] italic font-light">SOLUTIONS</span>
         </motion.h1>
-        <p className="text-zinc-500 mt-6 max-w-2xl mx-auto uppercase tracking-[0.4em] text-[10px] font-bold">
+        <p className="text-zinc-500 mt-6 max-w-2xl mx-auto uppercase tracking-[0.4em] text-[10px] font-black">
           High-Level Protection by Mahaveer Bouncer | Amethi
         </p>
       </section>
@@ -106,15 +106,15 @@ const ServicesPage = () => {
             {/* Visual Side */}
             <div className="flex-1 relative group w-full">
               <div className="absolute -inset-4 bg-[#722F37]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative overflow-hidden rounded-[2.5rem] border border-white/5 aspect-video shadow-2xl">
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-black/5 dark:border-white/5 aspect-video shadow-2xl">
                 <img 
                   src={service.img} 
                   alt={service.title} 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
+                  className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
-              <div className="absolute top-6 left-6 p-4 bg-black/60 backdrop-blur-md rounded-2xl border border-white/10 text-[#722F37]">
+              <div className="absolute top-6 left-6 p-4 bg-white/80 dark:bg-black/60 backdrop-blur-md rounded-2xl border border-black/5 dark:border-white/10 text-[#722F37]">
                 {service.icon}
               </div>
             </div>
@@ -123,29 +123,29 @@ const ServicesPage = () => {
             <div className="flex-1 space-y-8">
               <div className="space-y-2">
                 <span className="text-[#722F37] text-[10px] font-black uppercase tracking-[0.5em]">Division {idx + 1}</span>
-                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white leading-none">
+                <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-black dark:text-white leading-none">
                   {service.title}
                 </h2>
               </div>
               
               <div className="space-y-4">
-                <p className="text-zinc-300 text-lg font-medium italic">"{service.desc}"</p>
-                <p className="text-zinc-500 leading-relaxed">{service.longDesc}</p>
+                <p className="text-zinc-600 dark:text-zinc-300 text-lg font-medium italic">"{service.desc}"</p>
+                <p className="text-zinc-500 leading-relaxed font-medium">{service.longDesc}</p>
               </div>
 
-              {/* 🔥 View More Logic (Expanded Details) */}
+              {/* Expanded Details */}
               <AnimatePresence>
                 {expandedId === service.id && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden bg-zinc-900/40 border border-white/5 rounded-3xl p-6 md:p-8"
+                    className="overflow-hidden bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-3xl p-6 md:p-8 shadow-inner"
                   >
-                    <h4 className="text-white font-black uppercase text-xs tracking-widest mb-4">Core Specializations</h4>
+                    <h4 className="text-black dark:text-white font-black uppercase text-xs tracking-widest mb-4">Core Specializations</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {service.specs.map((spec, i) => (
-                        <div key={i} className="flex items-center gap-3 text-zinc-400 text-sm">
+                        <div key={i} className="flex items-center gap-3 text-zinc-500 dark:text-zinc-400 text-sm font-bold">
                           <CheckCircle2 size={16} className="text-[#722F37]" />
                           {spec}
                         </div>
@@ -158,14 +158,14 @@ const ServicesPage = () => {
               <div className="flex flex-wrap gap-4 pt-4">
                 <button 
                   onClick={() => handleWhatsApp(service.title)}
-                  className="bg-[#25D366] text-black font-black px-8 py-4 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all uppercase tracking-widest text-[10px]"
+                  className="bg-[#25D366] text-black font-black px-8 py-4 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all uppercase tracking-widest text-[10px] shadow-lg shadow-[#25D366]/20"
                 >
                   <MessageCircle size={18} />
                   Book via WhatsApp
                 </button>
                 <button 
                   onClick={() => toggleDetails(service.id)}
-                  className="border border-white/10 text-white font-black px-8 py-4 rounded-full flex items-center gap-3 hover:bg-white hover:text-black transition-all uppercase tracking-widest text-[10px]"
+                  className="border border-black/10 dark:border-white/10 text-black dark:text-white font-black px-8 py-4 rounded-full flex items-center gap-3 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all uppercase tracking-widest text-[10px]"
                 >
                   {expandedId === service.id ? "Hide Info" : "View Details"} 
                   {expandedId === service.id ? <ChevronUp size={18} /> : <ArrowRight size={18} />}
@@ -178,13 +178,13 @@ const ServicesPage = () => {
 
       {/* Bottom CTA */}
       <section className="mt-40 max-w-4xl mx-auto px-6 text-center">
-        <div className="p-12 md:p-20 bg-zinc-900/30 border border-white/5 rounded-[4rem] space-y-8 relative overflow-hidden">
+        <div className="p-12 md:p-20 bg-white dark:bg-zinc-900/30 border border-black/5 dark:border-white/5 rounded-[4rem] space-y-8 relative overflow-hidden shadow-2xl dark:shadow-none transition-colors">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#722F37]/10 blur-[100px] rounded-full"></div>
-          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-white">Need a Customized Security Plan?</h2>
-          <p className="text-zinc-500 max-w-xl mx-auto font-medium">Our Amethi command center is ready to analyze your threat level and deploy tactical units within 24 hours.</p>
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-black dark:text-white">Need a Customized Security Plan?</h2>
+          <p className="text-zinc-500 max-w-xl mx-auto font-bold uppercase tracking-widest text-[10px]">Our Amethi command center is ready to analyze your threat level and deploy tactical units within 24 hours.</p>
           <button 
             onClick={() => handleWhatsApp("Custom Deployment Plan")}
-            className="inline-flex bg-white text-black font-black px-12 py-5 rounded-full uppercase tracking-[0.4em] text-[10px] hover:bg-[#722F37] hover:text-white transition-all shadow-2xl"
+            className="inline-flex bg-black dark:bg-white text-white dark:text-black font-black px-12 py-5 rounded-full uppercase tracking-[0.4em] text-[10px] hover:bg-[#722F37] hover:text-white transition-all shadow-2xl"
           >
             Consult Our Experts
           </button>

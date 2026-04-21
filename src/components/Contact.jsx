@@ -23,9 +23,9 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative py-20 bg-[#050505] border-t border-white/5 font-sans overflow-hidden">
-      {/* Tactical background glow */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-[#722F37]/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <section className="relative py-20 bg-[#F5F5F7] dark:bg-[#050505] border-t border-black/5 dark:border-white/5 font-sans overflow-hidden transition-colors duration-500">
+      {/* Tactical background glow - Optimized for both modes */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-black/5 dark:bg-white/5 blur-[120px] rounded-full pointer-events-none"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -34,9 +34,9 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[#F0F8FF] text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none font-sans"
+            className="text-black dark:text-[#F0F8FF] text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none font-sans"
           >
-            REQUEST <span className="text-[#722F37] italic font-light">DEPLOYMENT</span>
+            REQUEST <span className="opacity-40 italic font-light">DEPLOYMENT</span>
           </motion.h2>
           <p className="text-zinc-500 uppercase tracking-[0.4em] text-[10px] font-bold font-sans">
             Mahaveer Bouncer | Elite Command Center
@@ -52,7 +52,7 @@ const Contact = () => {
             <motion.div 
               whileHover={{ scale: 1.02 }}
               onClick={handleWhatsApp}
-              className="p-8 bg-zinc-900/40 border border-[#25D366]/20 rounded-[2.5rem] cursor-pointer group hover:bg-[#25D366]/5 transition-all shadow-xl"
+              className="p-8 bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-[#25D366]/20 rounded-[2.5rem] cursor-pointer group hover:border-[#25D366]/50 transition-all shadow-xl"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-[#25D366] text-black rounded-xl shadow-[0_0_15px_rgba(37,211,102,0.4)]">
@@ -60,7 +60,7 @@ const Contact = () => {
                 </div>
                 <span className="text-[#25D366] font-black uppercase tracking-widest text-xs">Live Support</span>
               </div>
-              <h3 className="text-xl font-bold text-white uppercase tracking-tight">Direct Dispatch</h3>
+              <h3 className="text-xl font-bold text-black dark:text-white uppercase tracking-tight">Direct Dispatch</h3>
               <p className="text-zinc-500 text-[10px] uppercase font-bold tracking-widest mt-2 leading-relaxed">
                 Connect with our Amethi HQ for instant unit deployment.
               </p>
@@ -70,18 +70,17 @@ const Contact = () => {
             <div className="grid grid-cols-2 gap-4">
               <a 
                 href={`mailto:${emailID}`}
-                className="p-6 bg-zinc-900/40 border border-white/5 rounded-2xl flex flex-col items-center gap-3 hover:border-white/20 transition-all text-center group"
+                className="p-6 bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-2xl flex flex-col items-center gap-3 hover:border-black/20 dark:hover:border-white/20 transition-all text-center group"
               >
-                <Mail size={20} className="text-zinc-400 group-hover:text-white transition-colors" />
+                <Mail size={20} className="text-zinc-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
                 <span className="text-[8px] font-black uppercase tracking-widest text-zinc-500">Secure Mail</span>
               </a>
               
-              {/* Instagram Card */}
               <a 
                 href="https://instagram.com/veer_bouncer_club" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-6 bg-zinc-900/40 border border-white/5 rounded-2xl flex flex-col items-center gap-3 hover:border-[#E1306C]/50 transition-all text-center group"
+                className="p-6 bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-2xl flex flex-col items-center gap-3 hover:border-[#E1306C]/50 transition-all text-center group"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-400 group-hover:text-[#E1306C] transition-colors">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -95,7 +94,7 @@ const Contact = () => {
             {/* Calling Card */}
             <a 
               href={`tel:+${primaryPhone}`}
-              className="flex items-center justify-between p-5 bg-white text-black rounded-2xl hover:bg-[#722F37] hover:text-white transition-all group shadow-xl"
+              className="flex items-center justify-between p-5 bg-black dark:bg-white text-white dark:text-black rounded-2xl hover:opacity-90 transition-all group shadow-xl"
             >
               <div className="flex items-center gap-4">
                 <Phone size={18} />
@@ -106,7 +105,7 @@ const Contact = () => {
           </div>
 
           {/* Right: Tactical Form */}
-          <div className="lg:col-span-7 bg-white/[0.01] border border-white/5 p-8 md:p-10 rounded-[3rem] backdrop-blur-xl shadow-2xl relative">
+          <div className="lg:col-span-7 bg-white dark:bg-white/[0.01] border border-black/5 dark:border-white/5 p-8 md:p-10 rounded-[3rem] backdrop-blur-xl shadow-2xl relative">
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="relative">
@@ -117,7 +116,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     type="text" 
                     placeholder="YOUR NAME" 
-                    className="w-full bg-black/40 border border-white/10 p-4 rounded-xl text-white outline-none text-xs focus:border-[#722F37] focus:ring-1 focus:ring-[#722F37]/30 transition-all placeholder:text-zinc-700 font-bold"
+                    className="w-full bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 p-4 rounded-xl text-black dark:text-white outline-none text-xs focus:border-black dark:focus:border-white transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-700 font-bold"
                   />
                 </div>
                 <div className="relative">
@@ -128,7 +127,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     type="tel" 
                     placeholder="CONTACT NO" 
-                    className="w-full bg-black/40 border border-white/10 p-4 rounded-xl text-white outline-none text-xs focus:border-[#722F37] focus:ring-1 focus:ring-[#722F37]/30 transition-all placeholder:text-zinc-700 font-bold"
+                    className="w-full bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 p-4 rounded-xl text-black dark:text-white outline-none text-xs focus:border-black dark:focus:border-white transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-700 font-bold"
                   />
                 </div>
               </div>
@@ -139,7 +138,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="MISSION DETAILS (LOCATION, TIME, FORCE TYPE)..." 
-                  className="w-full bg-black/40 border border-white/10 p-4 rounded-xl h-36 text-white outline-none text-xs resize-none focus:border-[#722F37] focus:ring-1 focus:ring-[#722F37]/30 transition-all placeholder:text-zinc-700 font-bold"
+                  className="w-full bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 p-4 rounded-xl h-36 text-black dark:text-white outline-none text-xs resize-none focus:border-black dark:focus:border-white transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-700 font-bold"
                 ></textarea>
               </div>
               <motion.button 
@@ -147,7 +146,7 @@ const Contact = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={handleWhatsApp}
                 type="button"
-                className="w-full bg-[#F0F8FF] text-black font-black py-5 rounded-xl uppercase tracking-[0.4em] text-[10px] flex items-center justify-center gap-3 hover:bg-[#722F37] hover:text-white transition-all shadow-2xl group"
+                className="w-full bg-black dark:bg-white text-white dark:text-black font-black py-5 rounded-xl uppercase tracking-[0.4em] text-[10px] flex items-center justify-center gap-3 hover:opacity-90 transition-all shadow-2xl group"
               >
                 Launch Mission Request <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </motion.button>

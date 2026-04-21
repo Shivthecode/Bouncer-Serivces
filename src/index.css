@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@import "tailwindcss";
+@theme {
+  /* Isse 'font-sans' ab 'Ubuntu' ban jayega poori site ke liye */
+  --font-sans: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
+}
 
 /* Ye line Tailwind ko batati hai ki class base par dark mode chalana hai */
 @variant dark (&:where(.dark, .dark *));
