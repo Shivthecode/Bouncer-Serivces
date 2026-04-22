@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { ShieldCheck, Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
+import { ShieldCheck, Menu, X, Phone, Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  
-  // 🔥 Theme logic: LocalStorage check
+  // Theme logic check
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme ? savedTheme === 'dark' : true;
   });
   
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const primaryPhone = "919956197272";
+  const primaryPhone = "+91 99561 97272";
 
-  // --- 🔥 Theme Toggle Logic (Pure Black & White) ---
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDarkMode) {
@@ -28,130 +24,99 @@ const Navbar = () => {
     }
   }, [isDarkMode]);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleHireClick = () => {
-    const message = encodeURIComponent("Hello Mahaveer Bouncer, I want to hire your security services.");
-    window.open(`https://wa.me/${primaryPhone}?text=${message}`, '_blank');
-  };
-
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Service', path: '/services' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Our Team', path: '/team' },
     { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[100] flex justify-center pt-4 md:pt-6 px-4 font-sans">
-      <motion.nav 
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className={`flex items-center justify-between px-5 md:px-10 py-3 transition-all duration-500
-          ${scrolled 
-            ? 'w-full md:w-[85%] bg-white/90 dark:bg-black/40 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-full shadow-xl' 
-            : 'w-full bg-transparent border-transparent'
-          }`}
-      >
+    // 'absolute' ko 'fixed' kiya taaki scroll par move na ho
+    // 'border-b-blue-600' aur 'border-b-[1px]' add kiya hai patli border ke liye
+    <nav className="fixed top-0 left-0 w-full z-[100] bg-white/90 dark:bg-[#050505]/90 backdrop-blur-sm border-b-[1px] border-b-blue-600/50 dark:border-b-blue-500/30 py-5 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
-        {/* Left: Branding (Pure Black & White Swap) */}
-        <Link to="/" className="flex items-center gap-2 group cursor-pointer shrink-0">
-          <motion.div 
-            whileHover={{ rotate: 180 }}
-            className="p-1.5 bg-black dark:bg-white rounded-lg shadow-lg transition-colors duration-500"
-          >
-            <ShieldCheck size={18} className="text-white dark:text-black" strokeWidth={2.5} />
-          </motion.div>
-          <span className="text-black dark:text-white font-bold tracking-tighter text-lg md:text-xl uppercase transition-colors duration-500">
-            Mahaveer<span className="opacity-40 italic hidden xs:inline">Bouncer</span>
-          </span>
+        {/* --- 🛡️ Left: Mahaveer Branding --- */}
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <div className="bg-[#0A1D56] dark:bg-white p-2 rounded-lg text-white dark:text-black">
+            <ShieldCheck size={24} fill="currentColor" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="text-xl font-black tracking-tighter text-[#0A1D56] dark:text-white uppercase">
+              MAHAVEER
+            </span>
+            <span className="text-[9px] font-bold tracking-[0.2em] text-[#0A1D56]/60 dark:text-white/50 uppercase">
+              Security Services
+            </span>
+          </div>
         </Link>
 
-        {/* Middle: Links */}
-        <div className="hidden lg:flex items-center space-x-8">
+        {/* --- 🧭 Middle: Nav Links (Standard Static Style) --- */}
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className={`group relative text-[10px] uppercase tracking-[0.2em] font-bold transition-colors 
+              className={`text-[12px] font-black uppercase tracking-wider transition-colors
                 ${location.pathname === link.path 
-                  ? 'text-black dark:text-white' 
-                  : 'text-zinc-400 dark:text-white/50 hover:text-black dark:hover:text-white'}`}
+                  ? 'text-blue-600 border-b-2 border-blue-600 pb-1' 
+                  : 'text-[#0A1D56]/80 dark:text-white/70 hover:text-blue-600 dark:hover:text-white'}`}
             >
               {link.name}
-              <motion.span 
-                className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black dark:bg-white"
-                whileHover={{ width: '100%' }}
-              />
             </Link>
           ))}
         </div>
 
-        {/* Right Section */}
-        <div className="flex items-center gap-2 md:gap-4">
-          
-          {/* Theme Toggle Button */}
-          <motion.button
-            whileTap={{ scale: 0.8 }}
+        {/* --- 📞 Right: Contact Box & Theme --- */}
+        <div className="flex items-center gap-4">
+          {/* Theme Switcher */}
+          <button
             onClick={() => setIsDarkMode(!isDarkMode)}
-            className="p-2 text-black dark:text-white/70 hover:opacity-100 transition-all"
+            className="p-2 text-[#0A1D56] dark:text-white hover:bg-zinc-100 dark:hover:bg-white/10 rounded-full"
           >
             {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-          </motion.button>
+          </button>
 
-          <motion.button 
-            onClick={handleHireClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-black dark:bg-white text-white dark:text-black text-[10px] md:text-[12px] font-black px-4 md:px-7 py-2 md:py-2.5 rounded-full flex items-center gap-2 transition-all shadow-lg whitespace-nowrap"
-          >
-            <span className="hidden xs:inline">HIRE NOW</span>
-            <span className="xs:hidden font-bold">HIRE</span>
-            <ArrowRight size={14} />
-          </motion.button>
+          {/* Contact Box from Image */}
+          <div className="hidden sm:flex items-center gap-3 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 px-4 py-2 rounded-2xl shadow-sm">
+            <div className="bg-blue-100 dark:bg-blue-600/20 p-2 rounded-xl text-blue-600">
+              <Phone size={16} />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[8px] text-zinc-400 font-bold uppercase tracking-widest leading-none mb-1">
+                24/7 Protection
+              </span>
+              <span className="text-[13px] font-black text-[#0A1D56] dark:text-white whitespace-nowrap">
+                +91 99561 97272
+              </span>
+            </div>
+          </div>
 
-          <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-black dark:text-white">
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {/* Mobile Toggle */}
+          <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-[#0A1D56] dark:text-white">
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-      </motion.nav>
+      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 left-4 right-4 bg-white/95 dark:bg-black/95 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-3xl p-8 lg:hidden shadow-2xl overflow-hidden"
-          >
-            <div className="flex flex-col space-y-6">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.name} 
-                  to={link.path} 
-                  onClick={() => setIsOpen(false)}
-                  className={`text-lg font-bold tracking-widest uppercase transition-colors
-                    ${location.pathname === link.path ? 'text-black dark:text-white' : 'text-zinc-400 dark:text-white/40'}`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <button 
-                onClick={handleHireClick}
-                className="w-full py-4 bg-black dark:bg-white text-white dark:text-black font-black rounded-xl uppercase tracking-widest text-xs mt-4"
-              >
-                Hire on WhatsApp
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      {/* Mobile Menu (Simple) */}
+      {isOpen && (
+        <div className="lg:hidden bg-white dark:bg-black border-b border-zinc-100 dark:border-white/10 p-6 space-y-4">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name} 
+              to={link.path} 
+              onClick={() => setIsOpen(false)}
+              className="block text-sm font-bold uppercase tracking-widest text-[#0A1D56] dark:text-white"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      )}
+    </nav>
   );
 };
 

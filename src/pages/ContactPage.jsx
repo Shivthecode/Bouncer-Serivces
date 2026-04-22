@@ -9,7 +9,8 @@ import {
   Clock,
   ArrowRight,
   ExternalLink,
-  Globe
+  Globe,
+  Navigation
 } from 'lucide-react';
 
 const ContactPage = () => {
@@ -43,120 +44,134 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="bg-[#F5F5F7] dark:bg-[#050505] text-black dark:text-white pt-24 md:pt-40 pb-10 md:pb-20 selection:bg-[#722F37] selection:text-white font-sans overflow-x-hidden transition-colors duration-500">
+    <div className="bg-[#F5F5F7] dark:bg-[#050505] text-black dark:text-white pt-32 md:pt-44 pb-10 md:pb-20 selection:bg-blue-600 selection:text-white font-sans overflow-x-hidden transition-colors duration-500">
       
-      <div className="max-w-7xl mx-auto px-4 md:px-6 font-sans">
+      {/* 🔵 Subtle Background Glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 dark:bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+      <div className="max-w-7xl mx-auto px-4 md:px-6 relative">
         
         {/* --- Header Section --- */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12 md:mb-24 space-y-4"
+          className="text-center mb-16 md:mb-24 space-y-4"
         >
-          <h1 className="text-5xl md:text-9xl font-black uppercase tracking-tighter leading-none text-black dark:text-white">
-            MAHAVEER <br /> <span className="text-[#722F37] italic font-light">BOUNCER</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">
+            <Navigation size={12} className="animate-pulse" /> Strategic HQ: Amethi
+          </div>
+          <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none text-[#0A1D56] dark:text-white">
+            MAHAVEER <br /> <span className="text-blue-600 italic font-light">BOUNCER</span>
           </h1>
-          <p className="text-zinc-500 uppercase tracking-[0.3em] text-[8px] md:text-[10px] font-black">
-            Veer Bouncer Club | Strategic Response Unit Amethi
+          <p className="text-zinc-500 dark:text-zinc-500 uppercase tracking-[0.3em] text-[8px] md:text-[10px] font-black">
+            Strategic Response Unit | Deployment Center
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start mb-24">
           
           {/* --- Left Side: Tactical Details --- */}
-          <div className="lg:col-span-5 space-y-8 md:space-y-10">
+          <div className="lg:col-span-5 space-y-8">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-black dark:text-white">
-                Direct <span className="text-[#722F37]">Intelligence</span>
+              <h2 className="text-3xl font-black uppercase tracking-tight text-[#0A1D56] dark:text-white">
+                Direct <span className="text-blue-600">Intelligence</span>
               </h2>
               
               <div className="grid grid-cols-1 gap-4">
                 {/* 📞 Call Card */}
                 <a 
                   href={`tel:+${primaryPhone}`}
-                  className="flex items-center gap-5 p-5 bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-2xl hover:border-[#722F37]/50 transition-all group shadow-xl dark:shadow-none"
+                  className="flex items-center gap-5 p-6 bg-white dark:bg-zinc-900/40 border border-blue-600/5 dark:border-white/5 rounded-2xl hover:border-blue-600/40 transition-all group shadow-xl shadow-blue-900/5 dark:shadow-none"
                 >
-                  <div className="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-black shrink-0 group-hover:bg-[#722F37] group-hover:text-white transition-all">
+                  <div className="w-12 h-12 bg-[#0A1D56] dark:bg-blue-600 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
                     <Phone size={20} />
                   </div>
                   <div>
-                    <p className="text-[8px] text-zinc-400 uppercase font-black tracking-widest">Command Line</p>
-                    <p className="text-sm md:text-base font-bold text-black dark:text-white">+91 99561 97272</p>
+                    <p className="text-[9px] text-zinc-400 dark:text-zinc-500 uppercase font-black tracking-widest mb-1">Emergency Dispatch</p>
+                    <p className="text-sm md:text-lg font-black text-[#0A1D56] dark:text-white tracking-wider">+91 99561 97272</p>
                   </div>
                 </a>
 
                 {/* 📧 Email Card */}
                 <a 
                   href={`mailto:${officialEmail}`}
-                  className="flex items-center gap-5 p-5 bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-2xl hover:border-[#722F37]/50 transition-all group shadow-xl dark:shadow-none"
+                  className="flex items-center gap-5 p-6 bg-white dark:bg-zinc-900/40 border border-blue-600/5 dark:border-white/5 rounded-2xl hover:border-blue-600/40 transition-all group shadow-xl shadow-blue-900/5 dark:shadow-none"
                 >
-                  <div className="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-black shrink-0 group-hover:bg-[#722F37] group-hover:text-white transition-all">
+                  <div className="w-12 h-12 bg-[#0A1D56] dark:bg-blue-600 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
                     <Mail size={20} />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[8px] text-zinc-400 uppercase font-black tracking-widest">Secure Email</p>
-                    <p className="text-[10px] md:text-sm font-bold truncate text-black dark:text-white">{officialEmail}</p>
+                    <p className="text-[9px] text-zinc-400 dark:text-zinc-500 uppercase font-black tracking-widest mb-1">Tactical Briefing</p>
+                    <p className="text-[10px] md:text-sm font-black truncate text-[#0A1D56] dark:text-white tracking-wider uppercase">{officialEmail}</p>
                   </div>
                 </a>
 
                 {/* 📍 Location Card */}
-                <div className="flex items-center gap-5 p-5 bg-white dark:bg-zinc-900/40 border border-black/5 dark:border-white/5 rounded-2xl shadow-xl dark:shadow-none">
-                  <div className="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-black shrink-0">
+                <div className="flex items-center gap-5 p-6 bg-white dark:bg-zinc-900/40 border border-blue-600/5 dark:border-white/5 rounded-2xl shadow-xl shadow-blue-900/5 dark:shadow-none">
+                  <div className="w-12 h-12 bg-[#0A1D56] dark:bg-blue-600 rounded-xl flex items-center justify-center text-white shrink-0">
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-[8px] text-zinc-400 uppercase font-black tracking-widest">Headquarters</p>
-                    <p className="text-sm md:text-base font-bold italic truncate text-black dark:text-white">Amethi, Uttar Pradesh</p>
+                    <p className="text-[9px] text-zinc-400 dark:text-zinc-500 uppercase font-black tracking-widest mb-1">Amethi HQ</p>
+                    <p className="text-sm md:text-base font-black italic text-[#0A1D56] dark:text-white">FHH8+JJV Utelwa, Amethi, UP</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* --- WhatsApp Feature Card --- */}
-            <div className="p-8 bg-white dark:bg-gradient-to-br dark:from-[#25D366]/20 dark:to-transparent border border-black/5 dark:border-[#25D366]/20 rounded-[2.5rem] space-y-4 shadow-2xl dark:shadow-none">
-               <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-[#25D366] rounded-full animate-ping"></div>
-                  <span className="text-[9px] font-black uppercase tracking-widest text-[#25D366]">Live Support Online</span>
+            {/* --- 🟢 WhatsApp Feature Card (Keeping Green as requested) --- */}
+            <div className="p-10 bg-white dark:bg-white/[0.02] border-2 border-[#25D366]/20 rounded-[2.5rem] space-y-6 shadow-2xl relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-8 opacity-5 text-[#25D366]">
+                  <MessageCircle size={100} />
                </div>
-               <h4 className="text-lg font-bold uppercase tracking-tight text-black dark:text-white">Need Security Now?</h4>
+               <div className="flex items-center gap-3 relative z-10">
+                  <div className="w-2 h-2 bg-[#25D366] rounded-full animate-ping"></div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#25D366]">Command Center Active</span>
+               </div>
+               <h4 className="text-2xl font-black uppercase tracking-tight text-[#0A1D56] dark:text-white relative z-10 leading-tight">Need Support <br/> Right Now?</h4>
                <button 
                 onClick={handleWhatsAppChat}
-                className="w-full py-4 bg-[#25D366] text-black font-black uppercase tracking-widest text-[10px] rounded-xl flex items-center justify-center gap-3 active:scale-95 transition-all shadow-xl"
+                className="w-full py-5 bg-[#25D366] text-white font-black uppercase tracking-[0.2em] text-[11px] rounded-2xl flex items-center justify-center gap-3 hover:shadow-[0_10px_30px_rgba(37,211,102,0.3)] hover:-translate-y-1 transition-all relative z-10"
                >
-                 <MessageCircle size={16} /> Deploy via WhatsApp
+                 <MessageCircle size={20} fill="currentColor" /> Deploy via WhatsApp
                </button>
             </div>
           </div>
 
-          {/* --- Right Side: Tactical Form --- */}
+          {/* --- ➡️ Right Side: Tactical Form --- */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="lg:col-span-7 bg-white dark:bg-white/[0.01] border border-black/5 dark:border-white/5 p-6 md:p-14 rounded-[2.5rem] md:rounded-[4rem] backdrop-blur-xl shadow-2xl dark:shadow-none"
+            className="lg:col-span-7 bg-white dark:bg-[#0A1D56]/10 border border-blue-600/10 dark:border-white/5 p-8 md:p-14 rounded-[3rem] md:rounded-[4rem] backdrop-blur-xl shadow-2xl dark:shadow-none"
           >
-            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8 font-sans">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div className="mb-10">
+              <h3 className="text-[#0A1D56] dark:text-white text-3xl font-black uppercase tracking-tight">Mission Intel</h3>
+              <div className="w-16 h-1.5 bg-blue-600 mt-4 rounded-full"></div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input 
                   required type="text" placeholder="YOUR NAME" 
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 p-4 md:p-5 rounded-xl md:rounded-[1.5rem] text-black dark:text-white outline-none text-xs focus:border-[#722F37] transition-all placeholder:text-zinc-400 font-bold" 
+                  className="w-full bg-blue-50/50 dark:bg-black/40 border border-blue-100 dark:border-white/10 p-5 rounded-2xl text-[#0A1D56] dark:text-white outline-none text-xs focus:border-blue-600 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-black tracking-widest" 
                 />
                 <input 
-                  required type="tel" placeholder="PHONE LINE" 
+                  required type="tel" placeholder="CONTACT LINE" 
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 p-4 md:p-5 rounded-xl md:rounded-[1.5rem] text-black dark:text-white outline-none text-xs focus:border-[#722F37] transition-all placeholder:text-zinc-400 font-bold" 
+                  className="w-full bg-blue-50/50 dark:bg-black/40 border border-blue-100 dark:border-white/10 p-5 rounded-2xl text-[#0A1D56] dark:text-white outline-none text-xs focus:border-blue-600 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-black tracking-widest" 
                 />
               </div>
               <textarea 
-                required placeholder="MISSION BRIEFING (Location, Duration)..." 
+                required placeholder="MISSION BRIEFING (FORCE TYPE, LOCATION, DURATION)..." 
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
-                className="w-full bg-black/5 dark:bg-black/50 border border-black/10 dark:border-white/10 p-4 md:p-5 rounded-xl md:rounded-[1.5rem] h-32 md:h-40 text-black dark:text-white text-xs resize-none outline-none focus:border-[#722F37] transition-all placeholder:text-zinc-400 font-bold"
+                className="w-full bg-blue-50/50 dark:bg-black/40 border border-blue-100 dark:border-white/10 p-5 rounded-2xl h-44 text-[#0A1D56] dark:text-white text-xs resize-none outline-none focus:border-blue-600 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-black tracking-widest"
               ></textarea>
-              <button type="submit" className="w-full bg-black dark:bg-white text-white dark:text-black font-black py-5 md:py-6 rounded-xl md:rounded-[1.5rem] uppercase tracking-[0.4em] text-[9px] md:text-[10px] hover:bg-[#722F37] hover:text-white dark:hover:bg-[#722F37] transition-all flex items-center justify-center gap-3 shadow-2xl group">
-                Launch Request <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <button type="submit" className="w-full bg-[#0A1D56] dark:bg-blue-600 text-white font-black py-6 rounded-2xl uppercase tracking-[0.4em] text-[10px] hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/20 transition-all flex items-center justify-center gap-4 group shadow-2xl">
+                Launch Request <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>
           </motion.div>
@@ -164,42 +179,40 @@ const ContactPage = () => {
 
         {/* --- 🔥 LOCATION CARD --- */}
         <div className="mb-20">
-          <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4.5rem] border border-black/5 dark:border-white/5 bg-white dark:bg-zinc-900/10 p-8 md:p-20 text-center shadow-2xl dark:shadow-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#722F37]/5 blur-[120px] pointer-events-none"></div>
+          <div className="relative w-full overflow-hidden rounded-[2.5rem] md:rounded-[4.5rem] border border-blue-600/10 dark:border-white/5 bg-white dark:bg-zinc-900/10 p-10 md:p-24 text-center shadow-2xl dark:shadow-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-600/5 blur-[120px] pointer-events-none"></div>
             
-            <div className="relative z-10 flex flex-col items-center space-y-6 md:space-y-8">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-black dark:bg-white rounded-3xl border border-[#722F37]/30 flex items-center justify-center text-white dark:text-black shadow-2xl">
-                <Globe size={32} />
+            <div className="relative z-10 flex flex-col items-center space-y-8">
+              <div className="w-20 h-20 bg-[#0A1D56] dark:bg-blue-600 rounded-[2rem] shadow-xl flex items-center justify-center text-white group cursor-pointer hover:rotate-12 transition-transform">
+                <Globe size={36} />
               </div>
               
-              <div className="space-y-3 px-4">
-                <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-black dark:text-white">
-                  Amethi <span className="text-[#722F37] italic font-light">Division</span>
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#0A1D56] dark:text-white">
+                  Amethi <span className="text-blue-600 italic font-light">Division</span>
                 </h2>
-                <p className="text-zinc-500 max-w-2xl mx-auto uppercase tracking-[0.1em] md:tracking-[0.3em] text-[10px] md:text-xs font-black leading-relaxed italic">
+                <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto uppercase tracking-[0.3em] text-[10px] md:text-xs font-black leading-relaxed italic">
                   {amethiAddress}
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center px-6">
-                <button 
-                  onClick={openGoogleMaps}
-                  className="px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#722F37] hover:text-white transition-all flex items-center justify-center gap-3 shadow-xl"
-                >
-                  <ExternalLink size={14} /> Get Directions
-                </button>
-              </div>
+              <button 
+                onClick={openGoogleMaps}
+                className="px-10 py-5 bg-[#0A1D56] dark:bg-white text-white dark:text-black rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-4 shadow-xl"
+              >
+                <ExternalLink size={16} /> Get Tactical Directions
+              </button>
             </div>
           </div>
         </div>
 
         {/* --- Visual Footer Labels --- */}
-        <div className="pt-10 border-t border-black/5 dark:border-white/5 flex flex-wrap justify-center md:justify-between items-center gap-6 opacity-40 pb-10">
-           <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest flex items-center gap-2 text-black dark:text-white">
-             <ShieldCheck size={14} /> Veer Bouncer Club
+        <div className="pt-10 border-t border-blue-600/10 dark:border-white/5 flex flex-wrap justify-center md:justify-between items-center gap-10 opacity-60 pb-10">
+           <span className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 text-[#0A1D56] dark:text-white">
+             <ShieldCheck size={16} className="text-blue-600" /> Mahaveer Security Group
            </span>
-           <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest flex items-center gap-2 text-black dark:text-white">
-             <Clock size={14} /> 24/7 Strategic Support
+           <span className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 text-[#0A1D56] dark:text-white">
+             <Clock size={16} className="text-blue-600" /> 24/7 Strategic Support
            </span>
         </div>
 
@@ -207,5 +220,13 @@ const ContactPage = () => {
     </div>
   );
 };
+
+// Simple Send icon since Lucide sometimes differs
+const Send = ({ size, className }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <line x1="22" y1="2" x2="11" y2="13"></line>
+    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+  </svg>
+);
 
 export default ContactPage;

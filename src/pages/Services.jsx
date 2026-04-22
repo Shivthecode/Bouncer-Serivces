@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Users, UserCheck, PartyPopper, Building2, Briefcase } from 'lucide-react';
+import { Shield, Users, UserCheck, PartyPopper, Building2, Briefcase, ArrowRight } from 'lucide-react';
 
 const services = [
   {
@@ -54,15 +54,15 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-black dark:text-[#F0F8FF] text-5xl md:text-7xl font-black uppercase tracking-tighter"
+              className="text-[#0A1D56] dark:text-[#F0F8FF] text-5xl md:text-7xl font-black uppercase tracking-tighter"
             >
-              OUR <br /> <span className="text-[#722F37] italic font-light">SERVICES</span>
+              OUR <br /> <span className="text-blue-600 italic font-light">SERVICES</span>
             </motion.h2>
-            <p className="text-zinc-500 dark:text-zinc-500 mt-4 text-sm leading-relaxed uppercase tracking-widest font-bold">
-              At Mahaveer Bouncers, we deliver security excellence through highly trained and verified professionals.
+            <p className="text-zinc-500 dark:text-zinc-500 mt-4 text-[10px] leading-relaxed uppercase tracking-[0.3em] font-black">
+              Elite security excellence delivered through verified tactical professionals.
             </p>
           </div>
-          <div className="h-px flex-1 bg-black/10 dark:bg-white/10 hidden md:block mb-4 ml-10"></div>
+          <div className="h-px flex-1 bg-blue-600/20 dark:bg-white/10 hidden md:block mb-4 ml-10"></div>
         </div>
 
         {/* Services Grid */}
@@ -74,50 +74,52 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative bg-white dark:bg-zinc-900/20 border border-black/5 dark:border-[#722F37]/20 rounded-[2.5rem] overflow-hidden transition-all duration-500 shadow-xl dark:shadow-none"
+              className="group relative bg-white dark:bg-zinc-900/20 border border-black/5 dark:border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-500 shadow-xl dark:shadow-none hover:border-blue-600/30"
             >
-              {/* Image Header - ALWAYS COLORFUL NOW */}
-              <div className="relative h-56 overflow-hidden">
-                {/* Removed Grayscale and Dark Overlays */}
+              {/* Image Header */}
+              <div className="relative h-60 overflow-hidden">
                 <img 
                   src={service.img} 
                   alt={service.title} 
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" 
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 brightness-100 group-hover:brightness-90" 
                 />
                 
-                {/* Icon Box - Always Maroon Tinted */}
-                <div className="absolute top-6 left-6 z-20 p-3 bg-white/90 dark:bg-[#722F37]/20 backdrop-blur-md rounded-2xl border border-[#722F37]/20 text-[#722F37]">
+                {/* Icon Box - Blue Theme */}
+                <div className="absolute top-6 left-6 z-20 p-3 bg-white/90 dark:bg-[#0A1D56]/80 backdrop-blur-md rounded-2xl border border-blue-600/20 text-blue-600 dark:text-blue-400 shadow-lg">
                   {service.icon}
                 </div>
+
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               {/* Content */}
               <div className="p-8">
-                <h3 className="text-black dark:text-[#F0F8FF] text-2xl font-black uppercase tracking-tight mb-4 group-hover:text-[#722F37] transition-colors">
+                <h3 className="text-[#0A1D56] dark:text-[#F0F8FF] text-2xl font-black uppercase tracking-tight mb-4 group-hover:text-blue-600 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-500 text-sm leading-relaxed mb-8 h-12 overflow-hidden">
+                <p className="text-zinc-600 dark:text-zinc-500 text-sm leading-relaxed mb-8 h-12 overflow-hidden font-medium">
                   {service.desc}
                 </p>
                 
                 <motion.button
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-3 text-[10px] font-black tracking-[0.3em] uppercase text-[#722F37] dark:text-white transition-colors"
+                  whileHover={{ gap: "16px" }}
+                  className="flex items-center gap-3 text-[10px] font-black tracking-[0.3em] uppercase text-blue-600 dark:text-blue-400 transition-all"
                 >
-                  Request Deployment <span className="text-lg font-light">→</span>
+                  Request Deployment <ArrowRight size={14} strokeWidth={3} />
                 </motion.button>
               </div>
 
-              {/* Bottom Glow - Always slightly visible */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#722F37] to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Bottom Glow - Electric Blue */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Watermark */}
-      <div className="absolute -bottom-10 -left-10 text-[12rem] font-black text-black/[0.03] dark:text-white/[0.01] pointer-events-none select-none">
-        SERVICES
+      <div className="absolute -bottom-10 -left-10 text-[12rem] font-black text-blue-600/[0.03] dark:text-white/[0.01] pointer-events-none select-none uppercase tracking-tighter">
+        TACTICAL
       </div>
     </section>
   );
