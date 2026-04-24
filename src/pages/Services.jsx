@@ -46,26 +46,45 @@ const Services = () => {
     <section className="relative py-24 bg-[#F5F5F7] dark:bg-[#050505] overflow-hidden border-t border-black/5 dark:border-white/5 transition-colors duration-500 font-sans">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Section Heading */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <motion.h2 
+        {/* --- 🌟 IMPROVED SECTION HEADING --- */}
+        <div className="mb-20 text-center lg:text-left">
+          <div className="flex flex-col lg:flex-row items-center lg:items-end gap-4 lg:gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-blue-600 dark:text-blue-500 text-xs font-black tracking-[0.5em] uppercase block mb-4">
+                What We Offer
+              </span>
+              <h2 className="text-[#0A1D56] dark:text-white text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85]">
+                OUR <br /> 
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">SERVICES</span>
+              </h2>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="hidden lg:block h-px flex-1 bg-gradient-to-r from-blue-600/50 to-transparent mb-4"
+            />
+
+            <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-[#0A1D56] dark:text-[#F0F8FF] text-5xl md:text-7xl font-black uppercase tracking-tighter"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="max-w-xs text-zinc-500 dark:text-zinc-400 text-[11px] leading-relaxed uppercase tracking-widest font-bold lg:text-right"
             >
-              OUR <br /> <span className="text-blue-600 italic font-light">SERVICES</span>
-            </motion.h2>
-            <p className="text-zinc-500 dark:text-zinc-500 mt-4 text-[10px] leading-relaxed uppercase tracking-[0.3em] font-black">
-              Elite security excellence delivered through verified tactical professionals.
-            </p>
+              Elite security excellence delivered through verified tactical professionals across the nation.
+            </motion.p>
           </div>
-          <div className="h-px flex-1 bg-blue-600/20 dark:bg-white/10 hidden md:block mb-4 ml-10"></div>
         </div>
 
-        {/* Services Grid */}
+        {/* --- Services Grid --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
@@ -84,7 +103,7 @@ const Services = () => {
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 brightness-100 group-hover:brightness-90" 
                 />
                 
-                {/* Icon Box - Blue Theme */}
+                {/* Icon Box */}
                 <div className="absolute top-6 left-6 z-20 p-3 bg-white/90 dark:bg-[#0A1D56]/80 backdrop-blur-md rounded-2xl border border-blue-600/20 text-blue-600 dark:text-blue-400 shadow-lg">
                   {service.icon}
                 </div>
@@ -110,7 +129,7 @@ const Services = () => {
                 </motion.button>
               </div>
 
-              {/* Bottom Glow - Electric Blue */}
+              {/* Bottom Glow */}
               <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_15px_rgba(37,99,235,0.5)]"></div>
             </motion.div>
           ))}
