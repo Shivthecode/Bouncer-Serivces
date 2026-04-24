@@ -36,8 +36,9 @@ const Home = () => (
   >
     <Hero />
     <Carousel />
-    <Message />
+    
     <Services />
+    <Message />
     <About />
     <TeamSection /> 
     <Contact />
